@@ -1,5 +1,5 @@
 //assuming existence of a giveColor func 
-const giveColor = (pixelCoordinates) => { 
+const giveColor = pixelCoordinates => { 
     // return color of pixel
 }
 
