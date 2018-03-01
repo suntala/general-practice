@@ -5,7 +5,7 @@ const giveColor = (pixelCoordinates) => {
 
 //pixelObject = {x: __, y: __, color: __}
 //pictureDim = {width: __, height: __}
-const fillShape = (pixelObject, newColor, firstPix, pictureDim) => {
+const fillShape = (newColor, firstPix, pictureDim, pixelObject) => {
     let origColor = firstPix.color;
 
     let surroundingCoo = [ 
@@ -41,11 +41,11 @@ const fillShape = (pixelObject, newColor, firstPix, pictureDim) => {
     if (!checkBelongsInShape(pixelObject)) { 
         return
     }
-    else if (checkEdge().length) {
-        surroundingCoo.map(makePixelObj).filter(checkBelongsInShape).map(fillShape)
+    else if (checkEdge(pixelObject).length) {
+        surroundingCoo.map(makePixelObj).filter(checkBelongsInShape).map(fillShape(newColor, firstPix, pictureDim)) //check if variable input works
     }
     else {
         pixelObject.color = newColor;
-        surroundingCoo.map(makePixelObj).map(fillShape)
+        surroundingCoo.map(makePixelObj).map(fillShape(newColor, firstPix, pictureDim))
     }
 }
